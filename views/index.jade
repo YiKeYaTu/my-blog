@@ -1,0 +1,68 @@
+doctype html
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    title casles
+    link(rel="stylesheet", type="text/css", href="/stylesheets/index.css")
+  body
+    section.time-scroll
+      .timer
+        - var lastYear,tempDate,i = 0,dateInf = {};
+        each item in res
+          - tempDate = new Date(item.date);dateInf.year = tempDate.getFullYear();dateInf.month = tempDate.getMonth();dateInf.day = tempDate.getDate();i++;
+          if lastYear != dateInf.year
+            - lastYear = dateInf.year
+            .timer-year
+              .clock
+              p.page-time=dateInf.year
+          .timer-day
+            p.timer-day-inner=dateInf.month + '.'+ dateInf.day
+            if i == 1
+              .timer-day-content(len=i,style="background:#FFB400;transform: scale(1.5,1.5)")
+            else
+              .timer-day-content(len=i)
+    nav
+      section.nav
+        a.nav-list.here(href="")
+          span.nav-list-inner
+            | &#39318;&#39029;
+          span.nav-list-boder
+        a.nav-list(href="")
+          span.nav-list-inner
+            | &#26085;&#24535;
+          span.nav-list-boder.nav-list-boder-2n
+        a.nav-list(href="")
+          span.nav-list-inner
+            | &#30456;&#20876;
+          span.nav-list-boder
+        a.nav-list(href="")
+          span.nav-list-inner
+            | &#20081;&#20889;
+          span.nav-list-boder.nav-list-boder-2n
+      section.logo
+        .logo-el.base
+        .logo-el.hand
+          .control
+        .logo-el.go-top
+          .go-top-content
+            p.go
+              | TOP
+            p.go
+              | &#39318;&#39029;
+          .go-top-hand
+    article.normal-page
+      - var i = 0
+      each item in res
+        section.page(num=i++)
+          .tag=item.tag
+            span.tag-border
+          h2.page-title=item.title
+          .page-content
+            .page-container(data-id=item.id) !{item.content}
+
+              
+  footer
+  script(src="/javascripts/tools/sea.js" id="seajsnode")
+  script(type='text/javascript').
+    seajs.use('/javascripts/main');  
+

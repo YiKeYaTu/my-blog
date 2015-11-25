@@ -1,0 +1,59 @@
+doctype html
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    title CASLES&#21518;&#21488;&#31649;&#29702;
+    link(rel="stylesheet", type="text/css", href="/stylesheets/admin.css")
+  body
+    section.tools
+      .show-tools-container
+        p 工具栏
+        div
+        div
+      .tools-container
+        .draft
+          p.draft-title.draft-el 草稿箱
+          - if (res.length === 0)
+            p.no-data 暂无数据
+          - else 
+            each item in res
+              p.draft-el
+                span=item.title
+                span.delete D
+                span.show S
+        .tool-btn-outer
+          .point
+          p 保存进草稿箱
+          .point
+          p 发布一波
+    section.container
+      section.observer-container
+        .push-container
+          h2
+            | &#25776;&#20889;&#26032;&#25991;&#31456;
+          input.push-title(type="text", placeholder="标题" value="#{res.title?res.title:''}")
+          textarea.write-container(placeholder="")
+          div.prview-bottom
+          div.prview
+            p.priew-p 预览
+          div.choose-tag
+            input(class="tag" type="text" placeholder="Tag")
+            div.rizhi.choose-button.action-choose-button 日志
+            div.luanxie.choose-button 乱写
+            div.xinqing.choose-button 心情
+      nav.observer-nav
+        a(href="")
+        p.observer-console
+          | &#25511;&#21046;&#21488;
+        a#push(href="")
+        p.observer-console
+          | &#21457;&#24067;
+        a(href="")
+        p.observer-console
+          | &#31649;&#29702;
+        a.back-home(href="../")
+        p.observer-console
+          | &#20027;&#39029;
+    script(src="/javascripts/tools/sea.js" id="seajsnode")
+    script(type='text/javascript').
+      seajs.use('/javascripts/main');  
